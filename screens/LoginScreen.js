@@ -37,7 +37,10 @@ const LoginScreen = (props) => {
             </Item>
             <Item floatingLabel last style={{ borderColor: Colors.platinum }}>
               <Label style={{ color: Colors.platinum }}>Senha</Label>
-              <Input style={{ color: Colors.lightest }} />
+              <Input
+                secureTextEntry={true}
+                style={{ color: Colors.lightest }}
+              />
             </Item>
 
             <Separator amount={10} />
