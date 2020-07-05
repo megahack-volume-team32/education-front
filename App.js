@@ -4,6 +4,7 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { Ionicons } from "@expo/vector-icons";
 import { enableScreens } from "react-native-screens";
+import { Root } from "native-base";
 
 import Navigator from "./navigation/Navigator";
 
@@ -26,7 +27,11 @@ const App = () => {
     );
   }
 
-  return <Navigator />;
+  return (
+    <Root>
+      <Navigator />
+    </Root>
+  );
 };
 
 export default App;

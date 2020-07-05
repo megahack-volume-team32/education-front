@@ -1,3 +1,36 @@
+const UsersSample = [
+  {
+    id: "1000",
+    username: "wesleyos",
+    password: "123456",
+    badges: [1, 1, 2, 3, 4, 1, 1],
+  },
+];
+
+const BadgesSample = [
+  { id: "100", badgeType: 1 },
+  { id: "101", badgeType: 2 },
+  { id: "102", badgeType: 3 },
+  { id: "103", badgeType: 4 },
+  { id: "104", badgeType: 1 },
+  { id: "105", badgeType: 2 },
+  { id: "106", badgeType: 3 },
+  { id: "107", badgeType: 4 },
+  { id: "108", badgeType: 1 },
+  { id: "109", badgeType: 2 },
+  { id: "110", badgeType: 3 },
+  { id: "111", badgeType: 4 },
+  { id: "112", badgeType: 1 },
+  { id: "113", badgeType: 2 },
+  { id: "114", badgeType: 3 },
+  { id: "115", badgeType: 4 },
+  { id: "116", badgeType: 1 },
+  { id: "117", badgeType: 2 },
+  { id: "118", badgeType: 3 },
+  { id: "119", badgeType: 4 },
+  { id: "120", badgeType: 1 },
+];
+
 const CoursesSample = [
   {
     id: "0",
@@ -36,4 +69,4 @@ const CoursesSample = [
   },
 ];
 
-export { CoursesSample };
+export { CoursesSample, BadgesSample };
