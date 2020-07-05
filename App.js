@@ -26,7 +26,7 @@ const App = () => {
       <AppLoading startAsync={fetchFonts} onFinish={() => setIsReady(true)} />
     );
   }
-
+  //console.disableYellowBox = true;
   return (
     <Root>
       <Navigator />

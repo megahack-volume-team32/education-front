@@ -14,9 +14,10 @@ import { BarChart } from "react-native-chart-kit";
 
 import { Dimensions, FlatList } from "react-native";
 
-import Colors from "../common/Colors";
 import { BadgesSample } from "../data/SampleData";
 import CustomBadge from "../components/CustomBadge";
+import Colors from "../common/Colors";
+import CustomHeader from "../components/CustomHeader";
 
 const renderItem = (itemData) => {
   return <CustomBadge bType={itemData.item.badgeType}></CustomBadge>;
@@ -54,6 +55,15 @@ const AchievementScreen = (props) => {
 
   return (
     <Container>
+      <CustomHeader
+        color={Colors.platinum}
+        textColor={Colors.blue}
+        isHeader
+        onLeftIconClick={() => {
+          props.navigation.openDrawer();
+        }}
+        title={"Suas Habilidades"}
+      />
       <Content
         style={{ backgroundColor: Colors.blue }}
         contentContainerStyle={{ alignItems: "center" }}

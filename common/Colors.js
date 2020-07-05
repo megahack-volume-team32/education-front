@@ -4,4 +4,5 @@ export default {
   platinum: "#E5E5E5",
   darkest: "#000",
   lightest: "#fff",
+  downloaded: "#228b22",
 };

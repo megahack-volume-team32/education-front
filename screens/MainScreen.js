@@ -7,6 +7,7 @@ import {
   FlatList,
   Modal,
   TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 import {
   Container,
@@ -17,23 +18,53 @@ import {
   Icon,
   Input,
   Button,
+  Header,
+  Left,
+  Right,
+  Body,
   Card,
   CardItem,
+  Title,
 } from "native-base";
 
 import Separator from "../components/Separator";
 import CourseCard from "../components/CourseCard";
 import { CoursesSample } from "../data/SampleData";
+import CustomHeader from "../components/CustomHeader";
 
 import Colors from "../common/Colors";
-import { colors } from "react-native-elements";
 
 const MainScreen = (props) => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
+  const renderListItem = (itemData) => {
+    return (
+      <CourseCard
+        course={itemData.item}
+        onPress={() => {
+          props.navigation.navigate("Course", {
+            courseId: itemData.item.id,
+          });
+        }}
+      />
+    );
+  };
+
   return (
     <Container>
-      <Content contentContainerStyle={styles.containerStyle}>
+      <CustomHeader
+        color={Colors.blue}
+        isHeader
+        textColor={Colors.platinum}
+        onLeftIconClick={() => {
+          props.navigation.openDrawer();
+        }}
+        title={"Seus Cursos"}
+      />
+      <Content
+        contentContainerStyle={styles.containerStyle}
+        scrollEnabled={false}
+      >
         <View style={styles.searchBarContainer}>
           <Text
             style={{
@@ -100,7 +131,7 @@ const MainScreen = (props) => {
                     setModalVisible(!modalVisible);
                   }}
                 >
-                  <Text style={styles.modalButtonText}>Ok</Text>
+                  <Text style={styles.modalButtonText}>CONFIRMAR</Text>
                 </Button>
                 <Button
                   rounded
@@ -119,7 +150,6 @@ const MainScreen = (props) => {
         <Button
           style={styles.fixedButton}
           onPress={() => {
-            console.log("saiu");
             setModalVisible(true);
           }}
         >
@@ -131,10 +161,6 @@ const MainScreen = (props) => {
       </Content>
     </Container>
   );
-};
-
-const renderListItem = (itemData) => {
-  return <CourseCard course={itemData.item} />;
 };
 
 const styles = StyleSheet.create({
@@ -150,20 +176,22 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.blue,
   },
   searchBar: {
-    width: "90%",
+    width: "95%",
     height: 40,
     marginVertical: 5,
     borderColor: Colors.lightest,
-    backgroundColor: Colors.platinum,
+    backgroundColor: Colors.lightest,
+    elevation: 5,
   },
   courseListContainer: {
-    width: "100%",
+    width: "95%",
     height: "100%",
     paddingTop: 15,
     backgroundColor: "#fff",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     alignItems: "center",
+    elevation: 5,
   },
   courseList: {
     width: "95%",
@@ -190,12 +218,12 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: Colors.blue,
+    backgroundColor: Colors.orange,
     position: "absolute",
     justifyContent: "center",
     alignItems: "center",
     bottom: 10,
-    right: 10,
+    right: 15,
   },
 
   centeredView: {
@@ -239,14 +267,15 @@ const styles = StyleSheet.create({
   },
   modalButton: {
     backgroundColor: Colors.platinum,
-    width: "35%",
+    width: "40%",
     justifyContent: "center",
     alignItems: "center",
+    elevation: 2,
   },
   modalButtonText: {
     color: Colors.blue,
     fontFamily: "Roboto",
-    fontSize: 12,
+    fontSize: 13,
   },
 });
 

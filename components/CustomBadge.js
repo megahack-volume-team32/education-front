@@ -10,6 +10,7 @@ const CustomBadge = (props) => {
     name: "ios-medal",
     style: { color: "white", fontSize: 50 },
     backgroundColor: "#000",
+    borderColor: "#bb9b00",
   };
 
   switch (props.bType) {
@@ -18,6 +19,7 @@ const CustomBadge = (props) => {
         name: "ios-trophy",
         style: { color: Colors.darkest, fontSize: 32 },
         backgroundColor: "#ffbf00",
+        borderColor: "#bb9b00",
       };
       break;
     case 2:
@@ -26,6 +28,7 @@ const CustomBadge = (props) => {
 
         style: { color: Colors.lightest, fontSize: 32 },
         backgroundColor: "#965000",
+        borderColor: "#783c00",
       };
       break;
     case 3:
@@ -33,6 +36,7 @@ const CustomBadge = (props) => {
         name: "ios-boat",
         style: { color: Colors.lightest, fontSize: 32 },
         backgroundColor: Colors.blue,
+        borderColor: "#03102c",
       };
       break;
     case 4:
@@ -40,6 +44,7 @@ const CustomBadge = (props) => {
         name: "ios-trending-up",
         style: { color: Colors.lightest, fontSize: 32 },
         backgroundColor: "#50c878",
+        borderColor: "#30a656",
       };
       break;
     default:
@@ -54,6 +59,8 @@ const CustomBadge = (props) => {
     <Badge
       style={{
         backgroundColor: icon.backgroundColor,
+        borderWidth: 2,
+        borderColor: icon.borderColor,
         justifyContent: "center",
         alignItems: "center",
         height: 50,

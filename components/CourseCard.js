@@ -8,7 +8,7 @@ import Separator from "../components/Separator";
 const CourseCard = (props) => {
   return (
     <Card style={styles.courseCard}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={props.onPress}>
         <CardItem cardBody>
           <ImageBackground
             source={{
