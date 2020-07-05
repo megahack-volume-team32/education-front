@@ -12,6 +12,7 @@ props.isHeader
 props.onLeftIconClick
 */
 const CustomHeader = (props) => {
+  console.log(props.color);
   if (!props.isHeader) {
     return (
       <Header

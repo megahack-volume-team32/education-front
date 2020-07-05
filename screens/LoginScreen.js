@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyleSheet } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import {
   View,
   Text,
@@ -15,6 +15,7 @@ import {
 } from "native-base";
 
 import Separator from "../components/Separator";
+import Colors from "../common/Colors";
 
 const responseGoogle = (response) => {
   console.log(response);
@@ -26,41 +27,90 @@ const LoginScreen = (props) => {
       <Content contentContainerStyle={styles.containerStyle}>
         <View style={styles.boxStyle}>
           <Form>
-            <Label style={styles.centralizedTitle}>Adito</Label>
-            <Item floatingLabel last>
-              <Label>Nome de Usuário</Label>
-              <Input />
+            <Image
+              style={{ width: 300, height: 200 }}
+              source={require("../assets/logo_aune_02b.png")}
+            />
+            <Item floatingLabel last style={{ borderColor: Colors.platinum }}>
+              <Label style={{ color: Colors.platinum }}>Nome de Usuário</Label>
+              <Input style={{ color: Colors.lightest }} />
             </Item>
-            <Item floatingLabel last>
-              <Label>Senha</Label>
-              <Input />
+            <Item floatingLabel last style={{ borderColor: Colors.platinum }}>
+              <Label style={{ color: Colors.platinum }}>Senha</Label>
+              <Input style={{ color: Colors.lightest }} />
             </Item>
 
             <Separator amount={10} />
 
             <View style={styles.rememberMeContainer}>
-              <CheckBox checked={true} style={{ marginRight: 20 }} />
-              <Label>Conectar Automaticamente</Label>
+              <CheckBox
+                checked={true}
+                style={{
+                  color: Colors.blue,
+                  backgroundColor: Colors.orange,
+                  borderColor: Colors.orange,
+                  marginRight: 20,
+                }}
+              />
+              <Label style={{ color: Colors.platinum, fontFamily: "Roboto" }}>
+                Conectar Automaticamente
+              </Label>
             </View>
           </Form>
-          <Separator amount={10} />
+          <Separator amount={15} />
           <Button
-            block
+            rounded
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: Colors.orange,
+            }}
             onPress={() => {
               props.navigation.replace("Drawer");
             }}
           >
-            <Text style={{ textAlign: "center" }}>Entrar</Text>
+            <Text
+              style={{
+                textAlign: "center",
+                fontFamily: "Roboto",
+                fontSize: 20,
+                color: Colors.blue,
+              }}
+            >
+              Entrar
+            </Text>
           </Button>
 
           <Separator
             amount={30}
             style={{
               borderBottomWidth: 1,
-              borderBottomColor: "#000",
-              borderBottomColor: "#aaa",
+              borderBottomColor: Colors.platinum,
             }}
           />
+
+          <Button
+            rounded
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: Colors.platinum,
+            }}
+            onPress={() => {
+              props.navigation.replace("Drawer");
+            }}
+          >
+            <Text
+              style={{
+                textAlign: "center",
+                fontFamily: "Roboto",
+                fontSize: 20,
+                color: Colors.blue,
+              }}
+            >
+              REGISTRE-SE
+            </Text>
+          </Button>
         </View>
       </Content>
     </Container>
@@ -72,6 +122,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: Colors.blue,
   },
   boxStyle: {
     width: "80%",
