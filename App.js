@@ -1,18 +1,32 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 
-import Navigator from "./Navigator";
+import * as Font from "expo-font";
+import { AppLoading } from "expo";
+import { Ionicons } from "@expo/vector-icons";
+import { enableScreens } from "react-native-screens";
 
-export default function App() {
+import Navigator from "./navigation/Navigator";
+
+enableScreens();
+
+const fetchFonts = () => {
+  return Font.loadAsync({
+    Roboto: require("native-base/Fonts/Roboto.ttf"),
+    Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+    ...Ionicons.font,
+  });
+};
+
+const App = () => {
+  const [isReady, setIsReady] = React.useState(false);
+
+  if (!isReady) {
+    return (
+      <AppLoading startAsync={fetchFonts} onFinish={() => setIsReady(true)} />
+    );
+  }
+
   return <Navigator />;
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default App;
