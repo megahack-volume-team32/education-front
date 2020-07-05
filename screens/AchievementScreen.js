@@ -6,13 +6,14 @@ import {
   VictoryChart,
   VictoryTheme,
   VictoryLabel,
+  VictoryAxis,
+  VictoryLegend,
+  VictoryGroup,
 } from "victory-native";
 
 import { Container, Content, Text, View, Card, CardItem } from "native-base";
 
-import { BarChart } from "react-native-chart-kit";
-
-import { Dimensions, FlatList } from "react-native";
+import { Dimensions, FlatList, Image } from "react-native";
 
 import { BadgesSample } from "../data/SampleData";
 import CustomBadge from "../components/CustomBadge";
@@ -36,13 +37,6 @@ const itemSeparatorComponent = () => {
 };
 
 const AchievementScreen = (props) => {
-  const data = [
-    { quarter: "Reboqueiro", earnings: 13000 },
-    { quarter: "Administrativo", earnings: 16500 },
-    { quarter: "Terminais", earnings: 14250 },
-    { quarter: "Marketing", earnings: 19000 },
-  ];
-
   const barData = {
     datasets: [
       {
@@ -52,6 +46,13 @@ const AchievementScreen = (props) => {
 
     labels: ["Reboqueiro", "Administrativo", "Terminais", "Marketing"],
   };
+
+  const sampleData = [
+    { cargo: "A", pontos: 2 },
+    { cargo: "M", pontos: 3 },
+    { cargo: "O", pontos: 4 },
+    { cargo: "T", pontos: 1 },
+  ];
 
   return (
     <Container>
@@ -68,16 +69,6 @@ const AchievementScreen = (props) => {
         style={{ backgroundColor: Colors.blue }}
         contentContainerStyle={{ alignItems: "center" }}
       >
-        {/*<VictoryChart width={400} theme={VictoryTheme.grayscale} name="Skills">
-          <VictoryLabel
-            x={55}
-            y={40}
-            text={"Marketing"}
-            style={{ color: "white" }}
-            className
-          />
-          <VictoryBar data={data} x="quarter" y="earnings" horizontal={true} />
-  </VictoryChart>*/}
         <View style={styles.badgesContainer}>
           <View
             style={{
@@ -115,30 +106,28 @@ const AchievementScreen = (props) => {
             renderItem={renderItem}
           />
         </View>
-        <Text>daskdjsalkdj</Text>
-        <View>
-          <BarChart
-            // style={graphStyle}
-            data={barData}
-            width={Dimensions.get("window").width}
-            height={200}
-            showBarTops={true}
-            showValuesOnTopOfBars={true}
-            chartConfig={{
-              backgroundGradientFrom: Colors.blue,
-              backgroundGradientFromOpacity: 1,
-              backgroundGradientTo: Colors.blue,
-              backgroundGradientToOpacity: 0.5,
-              decimalPlaces: 0, // optional, defaults to 2dp
-              fillShadowGradient: "rgba(255,255,255,1)",
-              strokeWidth: 200,
-              color: (opacity = 1) => `rgba(252, 163, 17, ${opacity})`,
-              style: {
-                borderRadius: 16,
-              },
-            }}
-          />
-        </View>
+
+        <Text
+          style={{
+            color: "white",
+            fontSize: 20,
+            fontFamily: "Roboto",
+            marginTop: 60,
+          }}
+        >
+          Seu Desenvolvimento
+        </Text>
+        <Image
+          source={require("../assets/chart.jpg")}
+          style={{
+            width: 340,
+            height: 200,
+            borderRadius: 10,
+            margin: 10,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        />
       </Content>
     </Container>
   );
@@ -153,7 +142,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     overflow: "hidden",
     width: "95%",
-    height: "40%",
+    height: 150,
     elevation: 10,
   },
   badgesTitle: {
